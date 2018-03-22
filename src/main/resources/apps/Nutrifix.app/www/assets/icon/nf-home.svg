@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-813 1861 30 30">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #5152df;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="nf-home" transform="translate(-849 1852)">
+    <g id="Group_3356" data-name="Group 3356" transform="translate(2.703 -0.246)">
+      <path id="Path_1990" data-name="Path 1990" class="cls-1" d="M121.627,23.752H100.375a.887.887,0,0,1-.875-.875V9.243a.83.83,0,0,1,.365-.693l10.608-7.437a.82.82,0,0,1,.984,0l10.608,7.437a.881.881,0,0,1,.365.693V22.877A.768.768,0,0,1,121.627,23.752Z" transform="translate(-63.203 11.296)"/>
+      <rect id="Rectangle_743" data-name="Rectangle 743" class="cls-2" width="6.926" height="11.665" transform="translate(44.352 23.746)"/>
+    </g>
+    <rect id="Rectangle_770" data-name="Rectangle 770" class="cls-3" width="30" height="30" transform="translate(36 9)"/>
+  </g>
+</svg>

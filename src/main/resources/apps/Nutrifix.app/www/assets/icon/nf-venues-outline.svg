@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-627 1766 30 30">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="nf-venues-outline" transform="translate(-849 1758)">
+    <rect id="Rectangle_765" data-name="Rectangle 765" class="cls-1" width="30" height="30" transform="translate(222 8)"/>
+    <g id="Group_1191" data-name="Group 1191" transform="translate(228 11)">
+      <path id="Path_1596" data-name="Path 1596" d="M194.494,0h-.851A9.026,9.026,0,0,0,185.1,8.769a8.881,8.881,0,0,0,1.11,4.514c1.443,2.553,6.327,8.436,7.585,9.916a.457.457,0,0,0,.3.148.337.337,0,0,0,.3-.148c1.258-1.48,6.142-7.326,7.585-9.916a8.88,8.88,0,0,0,1.11-4.514A9.087,9.087,0,0,0,194.494,0Zm5.846,12.358a80.116,80.116,0,0,1-6.253,8.288,76.3,76.3,0,0,1-6.253-8.288,6.961,6.961,0,0,1-.851-3.589,7.134,7.134,0,0,1,6.734-6.956h.74a7.134,7.134,0,0,1,6.734,6.956A6.873,6.873,0,0,1,200.34,12.358Z" transform="translate(-185.094)"/>
+      <circle id="Ellipse_275" data-name="Ellipse 275" cx="1.85" cy="1.85" r="1.85" transform="translate(7.217 6.475)"/>
+    </g>
+  </g>
+</svg>

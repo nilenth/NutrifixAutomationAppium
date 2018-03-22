@@ -1,0 +1,24 @@
+<svg id="nf-icon-pin" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="2234 1184 36 36">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #5152df;
+        stroke: #fff;
+        stroke-width: 2px;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <rect id="Rectangle_774" data-name="Rectangle 774" class="cls-1" width="36" height="36" transform="translate(2234 1184)"/>
+  <g id="Symbol_1" data-name="Symbol 1" transform="translate(1882.734 866.092)">
+    <path id="Path_1596" data-name="Path 1596" class="cls-2" d="M197.964,0H196.8a12.359,12.359,0,0,0-11.7,12.006,12.16,12.16,0,0,0,1.52,6.18c1.976,3.5,8.663,11.55,10.385,13.577a.625.625,0,0,0,.405.2.461.461,0,0,0,.405-.2c1.722-2.026,8.409-10.03,10.385-13.577a12.158,12.158,0,0,0,1.52-6.18A12.442,12.442,0,0,0,197.964,0Z" transform="translate(172.172 320.908)"/>
+    <path id="Path_1820" data-name="Path 1820" class="cls-3" d="M2.533,0A2.533,2.533,0,1,1,0,2.533,2.533,2.533,0,0,1,2.533,0Z" transform="translate(367.147 329.774)"/>
+  </g>
+</svg>

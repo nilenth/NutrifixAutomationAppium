@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="1415 704 26 26">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #5152df;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-3 {
+        opacity: 0.6;
+      }
+    </style>
+  </defs>
+  <g id="Group_3361" data-name="Group 3361" transform="translate(1318 239)">
+    <circle id="Ellipse_628" data-name="Ellipse 628" class="cls-1" cx="8" cy="8" r="8" transform="translate(102 470)"/>
+    <g id="Group_3151" data-name="Group 3151" transform="translate(106 474)">
+      <line id="Line_188" data-name="Line 188" class="cls-2" y2="8" transform="translate(3.93 0)"/>
+      <line id="Line_189" data-name="Line 189" class="cls-2" x2="8" transform="translate(0 4)"/>
+    </g>
+    <rect id="Rectangle_773" data-name="Rectangle 773" class="cls-3" width="26" height="26" transform="translate(97 465)"/>
+  </g>
+</svg>
