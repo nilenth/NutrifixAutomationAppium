@@ -1,7 +1,7 @@
 # NutrifixAutomationAppium
 Appium Automation script for Nutrifix ionic app
 
-Clone Project
-Import extensions from pom.xml
-Start Appium Server
-Run Testng.xml
+1. Clone Project
+2. Import extensions from pom.xml
+3. Start Appium Server
+4. Run Testng.xml
