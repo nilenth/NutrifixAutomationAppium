@@ -4,7 +4,6 @@ import com.appium.automation.pageobjects.PageBase;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.SwipeElementDirection;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
@@ -12,7 +11,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -32,7 +30,6 @@ public class AppiumDriverBase {
     Set<String> availableContexts;
     ArrayList al = new ArrayList();
 
-
     @BeforeTest
     protected void createAppiumDriver() throws MalformedURLException, InterruptedException {
         final File classpathRoot = new File(System.getProperty("user.dir"));
@@ -44,9 +41,10 @@ public class AppiumDriverBase {
         capabilities.setCapability("deviceName", "iPhone 7 Plus");
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("platformVersion", "11.2"); //Replace this with your iOS version
-        capabilities.setCapability("autoWebView", "true");
+        capabilities.setCapability("autoWebView", true);
         capabilities.setCapability("app", "/Users/calcey/Downloads/Nutrifix.app");
         capabilities.setCapability("autoAcceptAlerts", true);
+        capabilities.setCapability("useNewWDA", true);
 
         //initializing driver object
         iosDriver = new IOSDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);

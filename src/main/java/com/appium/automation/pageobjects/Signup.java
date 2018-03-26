@@ -27,21 +27,40 @@ public class Signup extends PageBase {
     String dietaryPreferenceTitleText = "Do you have any dietary preferences?";
     String welcomeText = "Welcome to Nutrifix";
     String quickPickText = "Quick picks";
+    String genderName = "Male";
     String firstName = "jason";
-
+    String exercisePageTitleText = "How often do you exercise?";
+    String signupPageTitleText = "Register your account to save your settings";
+    String password = "user@123";
+    String height = "175";
+    String weight = "75";
 
     By landingMessage = By.xpath("//div[@class='login-content purpose']/h2");
-    By purposeOption = By.xpath("/html/body/ion-app/ng-component/ion-nav/ng-component/" +
-            "ion-content/div[2]/ion-slides/div/div[1]/ion-slide[1]/div/purpose-component/div/ion-list/ion-item[1]/div[1]/div/ion-label/button");
+    By purposeOption = By.xpath("//button[@type='button' and contains(., 'Be healthier')]");
     By dietaryPreferenceTitleElement = By.xpath("//div[@class='login-content']/h2");
     By dietaryPreference = By.xpath("//*[@class='item item-block item-ios item-checkbox']/ion-checkbox");
+    By continueButton = By.xpath("//span[contains(text(),'Continue')]");
+    By exercisePageTitleElement = By.xpath("//exercise-component/div[@class='login-content']/h2");
     By welcomeElement = By.xpath("//div[@class='tuttorial-content fixed-width margin-top']/h1");
+    By genderElement = By.xpath("//*[@id='lbl-22']");
+    By maleGenderOption = By.xpath("//*[@id=\"rb-22-0\"]");
+    By ageField = By.xpath("//div[@class='user-details']/ion-grid/ion-row[1]/ion-col[2]/input");
+    By heightField = By.xpath("//*[@id=\"height\"]");
+    By weightField = By.xpath("//*[@id=\"weight\"]");
+    By registerButton = By.xpath("//span[contains(text(),'Register')]");
+    By firstNameField = By.xpath("//*[@id='firstName']");
+    By emailField = By.xpath("//*[@id=\"email\"]");
+    By passwordField = By.xpath("//*[@id=\"password\"]");
+    By signupTitleElement = By.xpath("//*[@class='signup-title']");
+    By agreementCheckbox = By.xpath("//*[@class='checkbox checkbox-ios checkbox-ios-primary ng-untouched ng-pristine ng-invalid']");
+    By signupButton = By.xpath("//span[contains(text(),'Sign Up')]");
     By quickPickElement = By.xpath("//div[@class='quick-picks']/ion-label");
     By welcomeCloseButton = By.xpath("//button[@class='close-btn disable-hover button button-ios button-default button-default-ios']");
     By menubutton = By.xpath("//*[@id='tabpanel-t0-0']/ng-component/ion-header/ion-navbar/ion-buttons/button");
     By userNameElement = By.xpath("//div[@class='profile-header']//h1");
-    By readMoreButton = By.xpath("//*[@id=\"tabpanel-t0-0\"]/ng-component/ion-content/div[1]/div/div[2]/home-feed-list-component/div/ion-list/virtual-scroll/div[2]//div[1]/div//div/ion-grid/div/ion-row/ion-col[2]/a");
-    By para = By.xpath("/html/body/ion-app/ion-modal/div/ng-component/ion-content/div[2]/div/h2");
+    By readMoreButton = By.xpath("//div[@class='card-bot-bar']/ion-row/ion-col[2]/a");
+    By paragraph = By.xpath("//div[@class='article-popup']/h2");
+    By articleTitle = By.xpath("//div[@class='scrollable-content']/ion-item[1]");
 
 
     public Signup(IOSDriver driver) {
@@ -64,45 +83,40 @@ public class Signup extends PageBase {
 
     public void selectDietaryPreference() {
         driver.findElement(dietaryPreference).click();
-        driver.findElement(By.xpath("/html/body/ion-app/ng-component/ion-nav/ng-component/ion-footer/div/div/ion-grid/ion-row/ion-col[3]/button")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/ion-app/ng-component/ion-nav/ng-component/ion-content/div[2]/ion-slides/div/div[1]/ion-slide[3]/div/exercise-component/div/h2")));
-        String text4 = driver.findElement(By.xpath("/html/body/ion-app/ng-component/ion-nav/ng-component/ion-content/div[2]/ion-slides/div/div[1]/ion-slide[3]/div/exercise-component/div/h2")).getText();
-        String text5 = "How often do you exercise?";
-        Assert.assertEquals(text4, text5);
+        driver.findElement(continueButton).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(exercisePageTitleElement));
+        Assert.assertEquals(driver.findElement(exercisePageTitleElement).getText(), exercisePageTitleText);
     }
 
     public void selectExerciseDuration() {
-        driver.findElement(By.xpath("/html/body/ion-app/ng-component/ion-nav/ng-component/ion-footer/div/div/ion-grid/ion-row/ion-col[3]/button")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='lbl-22']")));
-        String text6 = driver.findElement(By.xpath("/*//*[@id=\"lbl-22\"]")).getText();
-        String text7 = "Male";
-        Assert.assertEquals(text6, text7);
+        driver.findElement(continueButton).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(genderElement));
+        Assert.assertEquals(driver.findElement(genderElement).getText(), genderName);
     }
 
     public void enterPhysicalDetails() {
         enterGenderAndAge();
         enterHeight();
         enterWeight();
-        driver.findElement(By.xpath("/html/body/ion-app/ng-component/ion-nav/ng-component/ion-footer/div/div/ion-grid/ion-row/ion-col[3]/div/button")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/ion-app/ng-component/ion-nav/ng-component/ion-content/div[2]/ion-slides/div/div[1]/ion-slide[5]/div/signup-component/form/div/h2")));
-        String text8 = driver.findElement(By.xpath("/html/body/ion-app/ng-component/ion-nav/ng-component/ion-content/div[2]/ion-slides/div/div[1]/ion-slide[5]/div/signup-component/form/div/h2")).getText();
-        String text9 = "Register your account to save your settings";
-        Assert.assertEquals(text8, text9);
-
+        driver.findElement(registerButton).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(signupTitleElement));
+        Assert.assertEquals(driver.findElement(signupTitleElement).getText(), signupPageTitleText);
     }
 
     public void enterSignUpDetails() {
-        driver.findElement(By.xpath("//*[@id='firstName']")).sendKeys(firstName);
+        driver.findElement(firstNameField).sendKeys(firstName);
         String randomNumbers = RandomStringUtils.randomNumeric(5);
-        driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(firstName + randomNumbers + "@mailinator.com");
-        driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("user@123");
-        driver.findElement(By.xpath("/html/body/ion-app/ng-component/ion-nav/ng-component/ion-content/div[2]/ion-slides/div/div[1]/ion-slide[5]/div/signup-component/form/div/div[3]/ion-grid/ion-row[2]/ion-col[1]/ion-checkbox")).click();
-        driver.findElement(By.xpath("/html/body/ion-app/ng-component/ion-nav/ng-component/ion-footer/div/div/ion-grid/ion-row/ion-col[3]/button")).click();
+        driver.findElement(emailField).sendKeys(firstName + randomNumbers + "@mailinator.com");
+        driver.findElement(passwordField).sendKeys(password);
+        driver.findElement(agreementCheckbox).click();
+        driver.findElement(signupButton).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(welcomeElement));
         Assert.assertEquals(driver.findElement(welcomeElement).getText(), welcomeText);
     }
 
     public void verifySignedUpUser() {
+        driver.switchTo().alert().accept();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(articleTitle));
         swipeHorizontal();
         verifyUserName();
         swipeHorizontalx();
@@ -110,22 +124,21 @@ public class Signup extends PageBase {
 
     public void verifyArticleOpen() {
         selectReadMoreBtn();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(para));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(paragraph));
         swipeVertical();
-
     }
 
     public void enterGenderAndAge() {
-        driver.findElement(By.xpath("//*[@id=\"rb-22-0\"]")).click();
-        driver.findElement(By.xpath("/html/body/ion-app/ng-component/ion-nav/ng-component/ion-content/div[2]/ion-slides/div/div[1]/ion-slide[4]/div/physical-component/div/form/div[2]/ion-grid/ion-row[1]/ion-col[2]/input")).sendKeys("25");
+        driver.findElement(maleGenderOption).click();
+        driver.findElement(ageField).sendKeys("25");
     }
 
     public void enterHeight() {
-        driver.findElement(By.xpath("//*[@id=\"height\"]")).sendKeys("175");
+        driver.findElement(heightField).sendKeys(height);
     }
 
     public void enterWeight() {
-        driver.findElement(By.xpath("//*[@id=\"weight\"]")).sendKeys("75");
+        driver.findElement(weightField).sendKeys(weight);
     }
 
     public void closeWelcomeMessage() {
