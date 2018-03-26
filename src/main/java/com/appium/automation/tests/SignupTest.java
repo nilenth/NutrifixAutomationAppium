@@ -55,7 +55,6 @@ public class SignupTest extends AppiumDriverBase {
     @Test(description = "Verify user enters personal details and signs up into the app", priority = 5)
     public void enterSignUpDetailsTest() {
         signup.enterSignUpDetails();
-        signup.closeWelcomeMessage();
     }
 
     @Test(description = "Verify name of the user signed up is displayed correctly", priority = 6)
