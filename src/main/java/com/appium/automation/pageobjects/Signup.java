@@ -14,6 +14,7 @@ import org.testng.collections.Objects;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -23,17 +24,13 @@ import java.util.concurrent.TimeUnit;
 public class Signup extends PageBase {
 
     WebDriverWait wait;
+    Properties properties;
     String landingPageText = "New user?\nHow can nutrifix help you?";
     String dietaryPreferenceTitleText = "Do you have any dietary preferences?";
     String welcomeText = "Welcome to Nutrifix";
     String quickPickText = "Quick picks";
-    String genderName = "Male";
-    String firstName = "jason";
     String exercisePageTitleText = "How often do you exercise?";
     String signupPageTitleText = "Register your account to save your settings";
-    String password = "user@123";
-    String height = "175";
-    String weight = "75";
 
     By landingMessage = By.xpath("//div[@class='login-content purpose']/h2");
     By purposeOption = By.xpath("//button[@type='button' and contains(., 'Be healthier')]");
@@ -56,7 +53,7 @@ public class Signup extends PageBase {
     By signupButton = By.xpath("//span[contains(text(),'Sign Up')]");
     By quickPickElement = By.xpath("//div[@class='quick-picks']/ion-label");
     By welcomeCloseButton = By.xpath("//button[@class='close-btn disable-hover button button-ios button-default button-default-ios']");
-    By menubutton = By.xpath("//*[@id='tabpanel-t0-0']/ng-component/ion-header/ion-navbar/ion-buttons/button");
+    By menuButton = By.xpath("//*[@id='tabpanel-t0-0']/ng-component/ion-header/ion-navbar/ion-buttons/button");
     By userNameElement = By.xpath("//div[@class='profile-header']//h1");
     By readMoreButton = By.xpath("//div[@class='card-bot-bar']/ion-row/ion-col[2]/a");
     By paragraph = By.xpath("//div[@class='article-popup']/h2");
@@ -91,7 +88,7 @@ public class Signup extends PageBase {
     public void selectExerciseDuration() {
         driver.findElement(continueButton).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(genderElement));
-        Assert.assertEquals(driver.findElement(genderElement).getText(), genderName);
+        Assert.assertEquals(driver.findElement(genderElement).getText(), getProperties().getProperty("gender"));
     }
 
     public void enterPhysicalDetails() {
@@ -104,10 +101,10 @@ public class Signup extends PageBase {
     }
 
     public void enterSignUpDetails() {
-        driver.findElement(firstNameField).sendKeys(firstName);
+        driver.findElement(firstNameField).sendKeys(getProperties().getProperty("firstName"));
         String randomNumbers = RandomStringUtils.randomNumeric(5);
-        driver.findElement(emailField).sendKeys(firstName + randomNumbers + "@mailinator.com");
-        driver.findElement(passwordField).sendKeys(password);
+        driver.findElement(emailField).sendKeys(getProperties().getProperty("firstName") + randomNumbers + "@mailinator.com");
+        driver.findElement(passwordField).sendKeys(getProperties().getProperty("password"));
         driver.findElement(agreementCheckbox).click();
         driver.findElement(signupButton).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(welcomeElement));
@@ -116,7 +113,8 @@ public class Signup extends PageBase {
 
     public void verifySignedUpUser() {
         driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(articleTitle));
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(quickPickElement));
         swipeHorizontal();
         verifyUserName();
         swipeHorizontalx();
@@ -130,15 +128,15 @@ public class Signup extends PageBase {
 
     public void enterGenderAndAge() {
         driver.findElement(maleGenderOption).click();
-        driver.findElement(ageField).sendKeys("25");
+        driver.findElement(ageField).sendKeys(getProperties().getProperty("age"));
     }
 
     public void enterHeight() {
-        driver.findElement(heightField).sendKeys(height);
+        driver.findElement(heightField).sendKeys(getProperties().getProperty("height"));
     }
 
     public void enterWeight() {
-        driver.findElement(weightField).sendKeys(weight);
+        driver.findElement(weightField).sendKeys(getProperties().getProperty("weight"));
     }
 
     public void closeWelcomeMessage() {
@@ -148,7 +146,7 @@ public class Signup extends PageBase {
 
     public void verifyUserName() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(userNameElement));
-        Assert.assertEquals(driver.findElement(userNameElement).getText(), firstName);
+        Assert.assertEquals(driver.findElement(userNameElement).getText(), getProperties().getProperty("firstName"));
     }
 
     public void selectReadMoreBtn() {

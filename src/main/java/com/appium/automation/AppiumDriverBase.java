@@ -44,7 +44,6 @@ public class AppiumDriverBase {
         capabilities.setCapability("platformVersion", "11.2"); //Replace this with your iOS version
         capabilities.setCapability("autoWebView", true);
         capabilities.setCapability("app", "/Users/calcey/Downloads/Nutrifix.app");
-        capabilities.setCapability("autoAcceptAlerts", true);
         capabilities.setCapability("useNewWDA", true);
 
         //initializing driver object
@@ -62,10 +61,10 @@ public class AppiumDriverBase {
     }
 
     public void changeToWebView() throws InterruptedException {
-        availableContexts = iosDriver.getContextHandles();
-        while (availableContexts.isEmpty()) {
-            Thread.sleep(10000);
+        while (iosDriver.getContextHandles() == null) {
+            Thread.sleep(20000);
         }
+        availableContexts = iosDriver.getContextHandles();
         al.addAll(availableContexts);
         iosDriver.context("" + al.get(1));
     }
