@@ -11,6 +11,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -60,8 +61,11 @@ public class AppiumDriverBase {
         return iosDriver;
     }
 
-    public void changeToWebView() {
+    public void changeToWebView() throws InterruptedException {
         availableContexts = iosDriver.getContextHandles();
+        while (availableContexts.isEmpty()) {
+            Thread.sleep(10000);
+        }
         al.addAll(availableContexts);
         iosDriver.context("" + al.get(1));
     }
