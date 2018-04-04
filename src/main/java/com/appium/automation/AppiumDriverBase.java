@@ -1,25 +1,20 @@
 package com.appium.automation;
 
-import com.appium.automation.pageobjects.PageBase;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.ios.IOSDriver;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.Set;
-
-import static java.time.Duration.ofMillis;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by calcey on 3/7/18.
@@ -39,15 +34,15 @@ public class AppiumDriverBase {
 
         //setting up desired capability
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", "iPhone 7 Plus");
-        capabilities.setCapability("platformName", "iOS");
-        capabilities.setCapability("platformVersion", "11.2"); //Replace this with your iOS version
+        capabilities.setCapability("deviceName", getProperties().getProperty("deviceName"));
+        capabilities.setCapability("platformName", getProperties().getProperty("platformName"));
+        capabilities.setCapability("platformVersion", getProperties().getProperty("platformVersion"));
         capabilities.setCapability("autoWebView", true);
-        capabilities.setCapability("app", "/Users/calcey/Downloads/Nutrifix.app");
+        capabilities.setCapability("app", getProperties().getProperty("appURL"));
         capabilities.setCapability("useNewWDA", true);
 
         //initializing driver object
-        iosDriver = new IOSDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
+        iosDriver = new IOSDriver(new URL(getProperties().getProperty("appiumURL")), capabilities);
 
         //initializing explicit wait object
         wait = new WebDriverWait(iosDriver, 30);
@@ -57,12 +52,25 @@ public class AppiumDriverBase {
     }
 
     public IOSDriver getIosDriver() {
+        Properties properties = getProperties();
         return iosDriver;
+    }
+
+    private static Properties getProperties() {
+        Properties properties = new Properties();
+        try {
+            InputStream input = AppiumDriverBase.class.getClassLoader().getResourceAsStream("DriverBase.properties");
+            properties.load(input);
+            input.close();
+        } catch (IOException exception) {
+
+        }
+        return properties;
     }
 
     public void changeToWebView() throws InterruptedException {
         while (iosDriver.getContextHandles() == null) {
-            Thread.sleep(20000);
+            iosDriver.manage().timeouts().wait();
         }
         availableContexts = iosDriver.getContextHandles();
         al.addAll(availableContexts);
