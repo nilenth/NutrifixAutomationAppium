@@ -16,7 +16,7 @@ public class PageBase {
     public PageBase(IOSDriver driver) {
         this.driver = driver;
         String propertiesPath = getClass().getSimpleName();
-        InputStream input = Signup.class.getClassLoader().getResourceAsStream(propertiesPath+".properties");
+        InputStream input = Signup.class.getClassLoader().getResourceAsStream(propertiesPath + ".properties");
         properties = new Properties();
         try {
             if (input.available() > 0) {
@@ -30,7 +30,7 @@ public class PageBase {
         return this.driver;
     }
 
-    public Properties getProperties(){
+    public Properties getProperties() {
         return this.properties;
     }
 

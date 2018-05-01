@@ -73,5 +73,6 @@
     <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-core:3.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpmime:4.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.9.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: your-testng-listener-artifact-groupid:your-testng-listener-artifact-artifactid:your-testng-listener-artifact-version" level="project" />
   </component>
 </module>

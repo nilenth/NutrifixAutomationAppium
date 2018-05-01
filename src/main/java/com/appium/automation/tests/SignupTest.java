@@ -1,7 +1,6 @@
 package com.appium.automation.tests;
 
 import com.appium.automation.AppiumDriverBase;
-//import com.appium.automation.pageobjects.Signup;
 import com.appium.automation.pageobjects.Signup;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.By;

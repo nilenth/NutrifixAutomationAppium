@@ -113,30 +113,8 @@ public class Signup extends PageBase {
         Assert.assertEquals(driver.findElement(welcomeElement).getText(), welcomeText);
     }
 
-    /*public void verifySignedUpUser() {
-        //driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(quickPickElement));
-        if (driver.findElement(noItemText).isDisplayed()) {
-            swipeHorizontal();
-        }
-        *//*else if (driver.findElement(mealCard).isDisplayed()){
-            swipeHorizontal();
-        }*//*
-        else {
-            swipeHorizontal();
-            *//*wait.until(ExpectedConditions.visibilityOfElementLocated(welcomeCloseButton));
-            driver.findElement(welcomeCloseButton).click();
-            driver.switchTo().alert().accept();
-            swipeHorizontal();*//*
-        }
-        verifyUserName();
-        swipeHorizontalx();
-    }*/
-
     public void verifySignedUpUser() {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        driver.switchTo().alert().accept();
         wait.until(ExpectedConditions.visibilityOfElementLocated(mealCard));
         swipeHorizontal();
         verifyUserName();
