@@ -11,7 +11,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -48,33 +47,45 @@ public class SignupTest extends AppiumDriverBase {
         signup.selectExerciseDuration();
     }
 
-    @Test(description = "Verify user enters physical details and navigates to next screen", priority = 4)
+    @Test(description = "Verify metric conversion of height", priority = 4)
+    public void heightMetricConversionTest() {
+        signup.cmToFtConversion();
+        signup.ftToCmConversion();
+    }
+
+    @Test(description = "Verify metric conversion of weight", priority = 5)
+    public void weightMetricConversionTest() {
+        signup.kgToLbsConversion();
+        signup.lbsToKgConversion();
+    }
+
+    @Test(description = "Verify user enters physical details and navigates to next screen", priority = 6)
     public void enterPhysicalDetailsTest() {
         signup.enterPhysicalDetails();
     }
 
-    @Test(description = "Verify user enters personal details and signs up into the app", priority = 5)
+    @Test(description = "Verify user enters personal details and signs up into the app", priority = 7)
     public void enterSignUpDetailsTest() {
         signup.enterSignUpDetails();
     }
 
-    @Test(description = "Verify name of the user signed up is displayed correctly", priority = 6)
+    @Test(description = "Verify name of the user signed up is displayed correctly", priority = 8)
     public void verifySignedUpUserTest() {
         homePage.closeWelcomeMessageAndSwipeHorizontal();
         signup.verifySignedUpUser();
     }
 
-    @Test(description = "Verify that the individual article opens correctly", priority = 7)
+    @Test(description = "Verify that the individual article opens correctly", priority = 9)
     public void verifyArticleOpenTest() {
         homePage.verifyArticleOpen();
     }
 
-    @Test(description = "Verify that the individual article can be closed", priority = 8)
+    @Test(description = "Verify that the individual article can be closed", priority = 10)
     public void verifyArticleCloseTest() {
         homePage.verifyArticleClose();
     }
 
-    @Test(description = "Verify that the user can logout from the app", priority = 9)
+    @Test(description = "Verify that the user can logout from the app", priority = 11)
     public void verifyLogOutTest() {
         homePage.logoutProcess();
         signup.checkLandingPage();
