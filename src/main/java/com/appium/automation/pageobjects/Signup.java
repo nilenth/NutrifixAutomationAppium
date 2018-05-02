@@ -55,8 +55,6 @@ public class Signup extends PageBase {
     By welcomeCloseButton = By.xpath("//button[@class='close-btn disable-hover button button-ios button-default button-default-ios']");
     By menuButton = By.xpath("//*[@id='tabpanel-t0-0']/ng-component/ion-header/ion-navbar/ion-buttons/button");
     By userNameElement = By.xpath("//div[@class='profile-header']//h1");
-    By readMoreButton = By.xpath("//div[@class='card-bot-bar']/ion-row/ion-col[2]/a");
-    By paragraph = By.xpath("//div[@class='article-popup']/h2");
     By articleTitle = By.xpath("//div[@class='scrollable-content']/ion-item[1]");
     By mealCard = By.xpath("//div[@class='meal-card']");
     By noItemText = By.xpath("//div[@class='no-results-msg']");
@@ -121,12 +119,6 @@ public class Signup extends PageBase {
         swipeHorizontalx();
     }
 
-    public void verifyArticleOpen() {
-        selectReadMoreBtn();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(paragraph));
-        swipeVertical();
-    }
-
     public void enterGenderAndAge() {
         driver.findElement(maleGenderOption).click();
         driver.findElement(ageField).sendKeys(getProperties().getProperty("age"));
@@ -140,19 +132,15 @@ public class Signup extends PageBase {
         driver.findElement(weightField).sendKeys(getProperties().getProperty("weight"));
     }
 
-    public void closeWelcomeMessage() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(welcomeCloseButton));
-        driver.findElement(welcomeCloseButton).click();
-    }
 
     public void verifyUserName() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(userNameElement));
-        Assert.assertEquals(driver.findElement(userNameElement).getText(), getProperties().getProperty("firstName"));
-    }
-
-    public void selectReadMoreBtn() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(readMoreButton));
-        driver.findElement(readMoreButton).click();
+        if (driver.findElement(userNameElement).isDisplayed()) {
+            Assert.assertEquals(driver.findElement(userNameElement).getText(), getProperties().getProperty("firstName"));
+        } else {
+            swipeHorizontal();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(userNameElement));
+            Assert.assertEquals(driver.findElement(userNameElement).getText(), getProperties().getProperty("firstName"));
+        }
     }
 
 }

@@ -6,5 +6,10 @@
             <class name="com.appium.automation.tests.SignupTest"></class>
         </classes>
     </test>
+    <!--<test name="LoginTest">
+        <classes>
+            <class name="com.appium.automation.tests.LoginTest"></class>
+        </classes>
+    </test>-->
 </suite>
 

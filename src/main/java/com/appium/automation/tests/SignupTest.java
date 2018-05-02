@@ -1,6 +1,7 @@
 package com.appium.automation.tests;
 
 import com.appium.automation.AppiumDriverBase;
+import com.appium.automation.pageobjects.HomePage;
 import com.appium.automation.pageobjects.Signup;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.By;
@@ -19,11 +20,12 @@ import java.util.concurrent.TimeUnit;
 public class SignupTest extends AppiumDriverBase {
 
     Signup signup;
-
+    HomePage homePage;
 
     @BeforeClass(alwaysRun = true)
     public void Setup() throws Exception {
         signup = new Signup(getIosDriver());
+        homePage = new HomePage(getIosDriver());
     }
 
     @Test(description = "Verify Home page loaded", priority = 0)
@@ -58,13 +60,18 @@ public class SignupTest extends AppiumDriverBase {
 
     @Test(description = "Verify name of the user signed up is displayed correctly", priority = 6)
     public void verifySignedUpUserTest() {
-        signup.closeWelcomeMessage();
+        homePage.closeWelcomeMessageAndSwipeHorizontal();
         signup.verifySignedUpUser();
     }
 
     @Test(description = "Verify that the individual article opens correctly", priority = 7)
     public void verifyArticleOpenTest() {
-        signup.verifyArticleOpen();
+        homePage.verifyArticleOpen();
+    }
+
+    @Test(description = "Verify that the individual article can be closed", priority = 8)
+    public void verifyArticleCloseTest() {
+        homePage.verifyArticleClose();
     }
 
 }
