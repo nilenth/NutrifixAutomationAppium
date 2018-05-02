@@ -28,9 +28,9 @@ public class Login extends PageBase {
     By emailField = By.xpath("//div[@class='login-form']/div/input");
     By passwordField = By.xpath("//div[@class='login-form']/div[2]/input");
     By loginButton = By.xpath("//*[@class='disable-hover button button-ios button-default button-default-ios button-block button-block-ios button-ios-primary']");
-    By welcomeCloseButton = By.xpath("//button[@class='close-btn disable-hover button button-ios button-default button-default-ios']");
     By welcomeElement = By.xpath("//div[@class='tuttorial-content fixed-width margin-top']/h1");
     By userNameElement = By.xpath("//div[@class='profile-header']//h1");
+    By welcomeCloseButton = By.xpath("//button[@class='close-btn disable-hover button button-ios button-default button-default-ios']");
     By mealCard = By.xpath("//div[@class='meal-card']");
 
     public Login(IOSDriver driver) {
@@ -66,6 +66,13 @@ public class Login extends PageBase {
 
     public void verifyUserName() {
         if (driver.findElement(userNameElement).isDisplayed()) {
+            Assert.assertEquals(driver.findElement(userNameElement).getText(), getProperties().getProperty("userName"));
+        } else if (driver.findElement(welcomeCloseButton).isDisplayed()) {
+            driver.findElement(welcomeCloseButton).click();
+            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(mealCard));
+            swipeHorizontal();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(userNameElement));
             Assert.assertEquals(driver.findElement(userNameElement).getText(), getProperties().getProperty("userName"));
         } else {
             swipeHorizontal();

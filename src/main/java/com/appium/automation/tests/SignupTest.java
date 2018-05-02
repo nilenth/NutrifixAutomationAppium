@@ -74,4 +74,10 @@ public class SignupTest extends AppiumDriverBase {
         homePage.verifyArticleClose();
     }
 
+    @Test(description = "Verify that the user can logout from the app", priority = 9)
+    public void verifyLogOutTest() {
+        homePage.logoutProcess();
+        signup.checkLandingPage();
+    }
+
 }

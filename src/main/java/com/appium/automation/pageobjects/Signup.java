@@ -52,12 +52,12 @@ public class Signup extends PageBase {
     By agreementCheckbox = By.xpath("//*[@class='checkbox checkbox-ios checkbox-ios-primary ng-untouched ng-pristine ng-invalid']");
     By signupButton = By.xpath("//span[contains(text(),'Sign Up')]");
     By quickPickElement = By.xpath("//div[@class='quick-picks']/ion-label");
-    By welcomeCloseButton = By.xpath("//button[@class='close-btn disable-hover button button-ios button-default button-default-ios']");
     By menuButton = By.xpath("//*[@id='tabpanel-t0-0']/ng-component/ion-header/ion-navbar/ion-buttons/button");
     By userNameElement = By.xpath("//div[@class='profile-header']//h1");
     By articleTitle = By.xpath("//div[@class='scrollable-content']/ion-item[1]");
-    By mealCard = By.xpath("//div[@class='meal-card']");
     By noItemText = By.xpath("//div[@class='no-results-msg']");
+    By welcomeCloseButton = By.xpath("//button[@class='close-btn disable-hover button button-ios button-default button-default-ios']");
+    By mealCard = By.xpath("//div[@class='meal-card']");
 
 
     public Signup(IOSDriver driver) {
@@ -135,6 +135,13 @@ public class Signup extends PageBase {
 
     public void verifyUserName() {
         if (driver.findElement(userNameElement).isDisplayed()) {
+            Assert.assertEquals(driver.findElement(userNameElement).getText(), getProperties().getProperty("firstName"));
+        } else if (driver.findElement(welcomeCloseButton).isDisplayed()) {
+            driver.findElement(welcomeCloseButton).click();
+            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(mealCard));
+            swipeHorizontal();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(userNameElement));
             Assert.assertEquals(driver.findElement(userNameElement).getText(), getProperties().getProperty("firstName"));
         } else {
             swipeHorizontal();

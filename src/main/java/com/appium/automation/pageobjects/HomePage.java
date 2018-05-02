@@ -22,6 +22,7 @@ public class HomePage extends PageBase {
     By readMoreButton = By.xpath("//div[@class='card-bot-bar']/ion-row/ion-col[2]/a");
     By paragraph = By.xpath("//div[@class='article-popup']/h2");
     By articleCloseButton = By.xpath("//button[@class='nf-btn-close article disable-hover bar-button bar-button-ios bar-button-clear bar-button-clear-ios']");
+    By logOutButton = By.xpath("//button[@class='btn-logout disable-hover button button-ios button-clear button-clear-ios button-block button-block-ios']");
 
     public HomePage(IOSDriver driver) {
         super(driver);
@@ -51,5 +52,17 @@ public class HomePage extends PageBase {
     public void verifyArticleClose() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(articleCloseButton));
         driver.findElement(articleCloseButton).click();
+    }
+
+    public void logoutProcess() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(mealCard));
+        swipeHorizontal();
+        if (driver.findElement(logOutButton).isDisplayed()) {
+            driver.findElement(logOutButton).click();
+        } else {
+            swipeHorizontal();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(logOutButton));
+            driver.findElement(logOutButton).click();
+        }
     }
 }
