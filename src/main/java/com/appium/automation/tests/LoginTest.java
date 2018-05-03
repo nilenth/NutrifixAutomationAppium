@@ -42,4 +42,10 @@ public class LoginTest extends AppiumDriverBase {
         login.verifyLoggedInUser();
     }
 
+    /*@Test(description = "Verify name of the user logged in is displayed correctly", priority = 3)
+    public void verifyopenbrowser() {
+        homePage.closeWelcomeMessageAndSwipeHorizontal();
+        login.verifyLoggedInUser();
+    }*/
+
 }

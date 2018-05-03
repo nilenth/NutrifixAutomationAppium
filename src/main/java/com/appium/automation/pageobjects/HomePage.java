@@ -24,6 +24,7 @@ public class HomePage extends PageBase {
     By articleCloseButton = By.xpath("//button[@class='nf-btn-close article disable-hover bar-button bar-button-ios bar-button-clear bar-button-clear-ios']");
     By logOutButton = By.xpath("//button[@class='btn-logout disable-hover button button-ios button-clear button-clear-ios button-block button-block-ios']");
 
+
     public HomePage(IOSDriver driver) {
         super(driver);
         this.wait = new WebDriverWait(driver, 30);
@@ -65,4 +66,5 @@ public class HomePage extends PageBase {
             driver.findElement(logOutButton).click();
         }
     }
+
 }

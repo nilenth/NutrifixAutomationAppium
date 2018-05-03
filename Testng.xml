@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TestSuite">
 
-    <test name="SignupTest">
+   <!-- <test name="SignupTest">
         <classes>
             <class name="com.appium.automation.tests.SignupTest"></class>
         </classes>
@@ -11,6 +11,12 @@
     <test name="LoginTest">
         <classes>
             <class name="com.appium.automation.tests.LoginTest"></class>
+        </classes>
+    </test>-->
+
+    <test name="ProfileTest">
+        <classes>
+            <class name="com.appium.automation.tests.ProfileTest"></class>
         </classes>
     </test>
 
