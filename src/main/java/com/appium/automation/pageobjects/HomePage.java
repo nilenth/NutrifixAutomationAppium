@@ -36,7 +36,6 @@ public class HomePage extends PageBase {
         driver.findElement(welcomeCloseButton).click();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         wait.until(ExpectedConditions.visibilityOfElementLocated(mealCard));
-        swipeHorizontal();
     }
 
     public void verifyArticleOpen() {
@@ -52,6 +51,12 @@ public class HomePage extends PageBase {
 
     public void verifyArticleClose() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(articleCloseButton));
+        driver.findElement(articleCloseButton).click();
+    }
+
+    public void verifyAppReturn() {
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(mealCard));
         driver.findElement(articleCloseButton).click();
     }
 

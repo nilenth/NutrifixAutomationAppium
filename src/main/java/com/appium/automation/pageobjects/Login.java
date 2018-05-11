@@ -60,8 +60,10 @@ public class Login extends PageBase {
     }
 
     public void verifyLoggedInUser() {
+        swipeHorizontal();
         verifyUserName();
         swipeHorizontalx();
+       // driver.quit();
     }
 
     public void verifyUserName() {
