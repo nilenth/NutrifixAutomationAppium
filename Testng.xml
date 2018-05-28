@@ -8,23 +8,30 @@
         </classes>
     </test>-->
 
-<!--    <test name="LoginTest">
+   <!-- <test name="LoginTest">
         <classes>
             <class name="com.appium.automation.tests.LoginTest"></class>
         </classes>
     </test>-->
 
-    <test name="ProfileTest">
+<!--    <test name="ProfileTest">
         <classes>
             <class name="com.appium.automation.tests.ProfileTest"></class>
         </classes>
-    </test>
+    </test>-->
 
-    <!--<test name="Home Page Test">
+  <!--  <test name="Home Page Test">
         <classes>
             <class name="com.appium.automation.tests.HomePageTest"></class>
         </classes>
+    </test>-->
+
+    <test name="MenuTest">
+        <classes>
+            <class name="com.appium.automation.tests.MenuTest"></class>
+        </classes>
     </test>
--->
+
+
 </suite>
 

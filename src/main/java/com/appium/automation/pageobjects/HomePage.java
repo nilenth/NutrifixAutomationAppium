@@ -2,10 +2,10 @@ package com.appium.automation.pageobjects;
 
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Duration;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -35,7 +35,7 @@ public class HomePage extends PageBase {
         wait.until(ExpectedConditions.visibilityOfElementLocated(welcomeCloseButton));
         driver.findElement(welcomeCloseButton).click();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(mealCard));
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(mealCard));
     }
 
     public void verifyArticleOpen() {
@@ -52,6 +52,15 @@ public class HomePage extends PageBase {
     public void verifyArticleClose() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(articleCloseButton));
         driver.findElement(articleCloseButton).click();
+    }
+
+    public void keepAppInBckground(){
+        driver.runAppInBackground(15);
+    }
+
+    public void activateNutrifix(){
+        driver.launchApp();
+       /* driver.activateApp();*/
     }
 
     public void verifyAppReturn() {

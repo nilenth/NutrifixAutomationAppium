@@ -44,10 +44,10 @@ public class HomePageTest extends AppiumDriverBase {
     public void verifyLoggedInUserTest() {
         homePage.closeWelcomeMessageAndSwipeHorizontal();
         login.verifyLoggedInUser();
-
+        homePage.keepAppInBckground();
     }
 
-    /*@Test(description = "Verify opening safari browser", priority = 4)
+    @Test(description = "Verify opening safari browser", priority = 4)
     public void verifyOpenBrowser() throws MalformedURLException {
        // iosDriver.quit();
         safariLanding.openSafari();
@@ -60,10 +60,11 @@ public class HomePageTest extends AppiumDriverBase {
 
     @Test(description = "Verify going back to Nutrifix", priority = 6)
     public void verifySwitchToNutrifix() throws MalformedURLException, InterruptedException {
-        switchToNutrifix();
+      //  switchToNutrifix();
 //        System.out.println(iosDriver.getPageSource());
         //homePage.verifyAppReturn();
-        login.checkLandingPage();
+        homePage.activateNutrifix();
+     //   login.checkLandingPage();
         login.navigateToLoginPage();
-    }*/
+    }
 }

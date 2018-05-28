@@ -105,7 +105,7 @@ public class Signup extends PageBase {
     public void enterSignUpDetails() {
         driver.findElement(firstNameField).sendKeys(getProperties().getProperty("firstName"));
         String randomNumbers = RandomStringUtils.randomNumeric(5);
-        driver.findElement(emailField).sendKeys(getProperties().getProperty("firstName") + randomNumbers + "@mailinator.com");
+        driver.findElement(emailField).sendKeys(getProperties().getProperty("firstName") + randomNumbers + "@dispostable.com");
         driver.findElement(passwordField).sendKeys(getProperties().getProperty("password"));
         driver.findElement(agreementCheckbox).click();
         driver.findElement(signupButton).click();
@@ -115,7 +115,7 @@ public class Signup extends PageBase {
 
     public void verifySignedUpUser() {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(mealCard));
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(mealCard));
         swipeHorizontal();
         verifyUserName();
         swipeHorizontalx();

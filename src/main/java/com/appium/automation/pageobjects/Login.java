@@ -32,6 +32,7 @@ public class Login extends PageBase {
     By userNameElement = By.xpath("//div[@class='profile-header']//h1");
     By welcomeCloseButton = By.xpath("//button[@class='close-btn disable-hover button button-ios button-default button-default-ios']");
     By mealCard = By.xpath("//div[@class='meal-card']");
+    By quickPickElement = By.xpath("//div[@class='quick-picks']/ion-label");
 
     public Login(IOSDriver driver) {
         super(driver);
@@ -40,6 +41,16 @@ public class Login extends PageBase {
     }
 
     public void checkLandingPage() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(landingMessage));
+        Assert.assertEquals(driver.findElement(landingMessage).getText(), landingPageText);
+    }
+
+    public void checkLandingPage2() {
+        try {
+            Thread.sleep(100000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         wait.until(ExpectedConditions.visibilityOfElementLocated(landingMessage));
         Assert.assertEquals(driver.findElement(landingMessage).getText(), landingPageText);
     }
@@ -63,7 +74,6 @@ public class Login extends PageBase {
         swipeHorizontal();
         verifyUserName();
         swipeHorizontalx();
-       // driver.quit();
     }
 
     public void verifyUserName() {
@@ -72,7 +82,7 @@ public class Login extends PageBase {
         } else if (driver.findElement(welcomeCloseButton).isDisplayed()) {
             driver.findElement(welcomeCloseButton).click();
             driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(mealCard));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(quickPickElement));
             swipeHorizontal();
             wait.until(ExpectedConditions.visibilityOfElementLocated(userNameElement));
             Assert.assertEquals(driver.findElement(userNameElement).getText(), getProperties().getProperty("userName"));
