@@ -26,7 +26,6 @@ public class Signup extends PageBase {
 
     WebDriverWait wait;
     Properties properties;
-    String landingPageText = "New user?\nHow can nutrifix help you?";
     String dietaryPreferenceTitleText = "Do you have any dietary preferences?";
     String welcomeText = "Welcome to Nutrifix";
     String quickPickText = "Quick picks";
@@ -34,7 +33,7 @@ public class Signup extends PageBase {
     String signupPageTitleText = "Register your account to save your settings";
     double dCentimeter;
 
-    By landingMessage = By.xpath("//div[@class='login-content purpose']/h2");
+
     By purposeOption = By.xpath("//button[@type='button' and contains(., 'Be healthier')]");
     By dietaryPreferenceTitleElement = By.xpath("//div[@class='login-content']/h2");
     By dietaryPreference = By.xpath("//*[@class='item item-block item-ios item-checkbox']/ion-checkbox");
@@ -57,7 +56,6 @@ public class Signup extends PageBase {
     By menuButton = By.xpath("//*[@id='tabpanel-t0-0']/ng-component/ion-header/ion-navbar/ion-buttons/button");
     By userNameElement = By.xpath("//div[@class='profile-header']//h1");
     By articleTitle = By.xpath("//div[@class='scrollable-content']/ion-item[1]");
-    By noItemText = By.xpath("//div[@class='no-results-msg']");
     By welcomeCloseButton = By.xpath("//button[@class='close-btn disable-hover button button-ios button-default button-default-ios']");
     By mealCard = By.xpath("//div[@class='meal-card']");
     By cmToFtToggle = By.xpath("//span[contains(text(),'cm')]");
@@ -68,11 +66,6 @@ public class Signup extends PageBase {
         super(driver);
         this.wait = new WebDriverWait(driver, 30);
         this.driver = driver;
-    }
-
-    public void checkLandingPage() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(landingMessage));
-        Assert.assertEquals(driver.findElement(landingMessage).getText(), landingPageText);
     }
 
     public void selectPurpose() {
@@ -115,23 +108,13 @@ public class Signup extends PageBase {
 
     public void verifySignedUpUser() {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(mealCard));
         swipeHorizontal();
         verifyUserName();
-        swipeHorizontalx();
     }
 
     public void enterGenderAndAge() {
         driver.findElement(maleGenderOption).click();
         driver.findElement(ageField).sendKeys(getProperties().getProperty("age"));
-    }
-
-    public void enterHeight() {
-        driver.findElement(heightField).sendKeys(getProperties().getProperty("height"));
-    }
-
-    public void enterWeight() {
-        driver.findElement(weightField).sendKeys(getProperties().getProperty("weight"));
     }
 
     public void cmToFtConversion() {

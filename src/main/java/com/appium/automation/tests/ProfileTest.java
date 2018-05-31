@@ -39,7 +39,6 @@ public class ProfileTest extends AppiumDriverBase {
     @Test(description = "Verify user can update the profile page", priority = 2)
     public void updateProfileTest() {
         profile.updateProfile();
-        profile.navigateToProfilePage();
     }
 
     @Test(description = "Verify Gender is updated correctly", priority = 3)

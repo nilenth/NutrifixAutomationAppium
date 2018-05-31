@@ -18,11 +18,9 @@ public class Login extends PageBase {
     WebDriverWait wait;
     Properties properties;
 
-    String landingPageText = "New user?\nHow can nutrifix help you?";
     String loginTitleText = "Log in";
     String welcomeText = "Welcome to Nutrifix";
 
-    By landingMessage = By.xpath("//div[@class='login-content purpose']/h2");
     By loginOption = By.xpath("//*[@class='link-btn disable-hover button button-ios button-outline button-outline-ios button-block button-block-ios button-outline-ios-text']");
     By loginTitleElement = By.xpath("//*[@class='form ng-untouched ng-pristine ng-invalid']/h2");
     By emailField = By.xpath("//div[@class='login-form']/div/input");
@@ -38,21 +36,6 @@ public class Login extends PageBase {
         super(driver);
         this.wait = new WebDriverWait(driver, 30);
         this.driver = driver;
-    }
-
-    public void checkLandingPage() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(landingMessage));
-        Assert.assertEquals(driver.findElement(landingMessage).getText(), landingPageText);
-    }
-
-    public void checkLandingPage2() {
-        try {
-            Thread.sleep(100000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        wait.until(ExpectedConditions.visibilityOfElementLocated(landingMessage));
-        Assert.assertEquals(driver.findElement(landingMessage).getText(), landingPageText);
     }
 
     public void navigateToLoginPage() {
@@ -73,7 +56,6 @@ public class Login extends PageBase {
     public void verifyLoggedInUser() {
         swipeHorizontal();
         verifyUserName();
-        swipeHorizontalx();
     }
 
     public void verifyUserName() {

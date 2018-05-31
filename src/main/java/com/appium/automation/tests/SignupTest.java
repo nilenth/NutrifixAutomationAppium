@@ -11,6 +11,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -29,7 +30,7 @@ public class SignupTest extends AppiumDriverBase {
 
     @Test(description = "Verify Home page loaded", priority = 0)
     public void checkLandingPageTest() {
-        signup.checkLandingPage();
+        homePage.checkLandingPage();
     }
 
     @Test(description = "Verify user selects purpose and navigates to next screen", priority = 1)
@@ -75,20 +76,10 @@ public class SignupTest extends AppiumDriverBase {
         signup.verifySignedUpUser();
     }
 
-    @Test(description = "Verify that the individual article opens correctly", priority = 9)
-    public void verifyArticleOpenTest() {
-        homePage.verifyArticleOpen();
-    }
-
-    @Test(description = "Verify that the individual article can be closed", priority = 10)
-    public void verifyArticleCloseTest() {
-        homePage.verifyArticleClose();
-    }
-
-    @Test(description = "Verify that the user can logout from the app", priority = 11)
+    @Test(description = "Verify that the user can logout from the app", priority = 9)
     public void verifyLogOutTest() {
         homePage.logoutProcess();
-        signup.checkLandingPage();
+        homePage.checkLandingPage();
     }
 
 }

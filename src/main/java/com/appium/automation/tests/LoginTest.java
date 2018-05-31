@@ -25,7 +25,7 @@ public class LoginTest extends AppiumDriverBase {
 
     @Test(description = "Verify Landing page loaded", priority = 0)
     public void checkLandingPageTest() {
-        login.checkLandingPage();
+        homePage.checkLandingPage();
     }
 
     @Test(description = "Verify user navigates to login screen", priority = 1)
@@ -42,6 +42,12 @@ public class LoginTest extends AppiumDriverBase {
     public void verifyLoggedInUserTest() {
         homePage.closeWelcomeMessageAndSwipeHorizontal();
         login.verifyLoggedInUser();
+    }
+
+    @Test(description = "Verify that the user can logout from the app", priority = 4)
+    public void verifyLogOutTest() {
+        homePage.logoutProcess();
+        homePage.checkLandingPage();
     }
 
 }

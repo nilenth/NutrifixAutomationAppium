@@ -41,7 +41,7 @@ public class MenuTest extends AppiumDriverBase {
         menu.navigateToTermsOfServicePage();
     }
 
-    @Test(description = "Verify user navigates to Terms of Service Page", priority = 3)
+    @Test(description = "Verify user navigates to Privacy Policy Page", priority = 3)
     public void checkPrivacyPolicyPageTest() {
         menu.navigateToPrivacyPolicyPage();
     }

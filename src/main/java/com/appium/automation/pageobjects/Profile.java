@@ -69,10 +69,7 @@ public class Profile extends PageBase {
     }
 
     public void navigateToProfilePage() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(quickPickElement));
-        swipeHorizontal();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(profileMenu));
+        wait.until(ExpectedConditions.elementToBeClickable(profileMenu));
         driver.findElement(profileMenu).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(profileName));
         Assert.assertEquals(driver.findElement(profileName).getText(), properties.getProperty("userName"));
@@ -151,9 +148,12 @@ public class Profile extends PageBase {
     public void updateAllDetails() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(updateButton));
         driver.findElement(updateButton).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(quickPickElement));
     }
 
     public void verifyGenderUpdated() {
+        swipeHorizontal();
+        navigateToProfilePage();
         String isGenderChecked = driver.findElement(By.xpath(editedGenderOptionStart + newGenderOption + "]/ion-item/div[1]/ion-radio/button")).getAttribute("aria-checked");
         Assert.assertTrue(Boolean.valueOf(isGenderChecked));
     }

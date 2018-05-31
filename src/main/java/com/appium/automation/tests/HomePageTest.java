@@ -27,7 +27,7 @@ public class HomePageTest extends AppiumDriverBase {
 
     @Test(description = "Verify Landing page loaded", priority = 0)
     public void checkLandingPageTest() {
-        login.checkLandingPage();
+        homePage.checkLandingPage();
     }
 
     @Test(description = "Verify user navigates to login screen", priority = 1)

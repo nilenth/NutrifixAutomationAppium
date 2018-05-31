@@ -37,10 +37,7 @@ public class Menu extends PageBase {
     }
 
     public void navigateToFAQPage() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(quickPickElement));
-        swipeHorizontal();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(faqmenu));
+        wait.until(ExpectedConditions.elementToBeClickable(faqmenu));
         driver.findElement(faqmenu).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(faqTitle));
         Assert.assertEquals(driver.findElement(faqTitle).getText(), faqTitleText);
@@ -55,11 +52,7 @@ public class Menu extends PageBase {
         } else {
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             swipeHorizontal();
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            wait.until(ExpectedConditions.elementToBeClickable(termsOfServiceMenu));
             driver.findElement(termsOfServiceMenu).click();
         }
         wait.until(ExpectedConditions.visibilityOfElementLocated(termsOfServiceTitle));
@@ -76,11 +69,7 @@ public class Menu extends PageBase {
         } else {
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             swipeHorizontal();
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            wait.until(ExpectedConditions.elementToBeClickable(privacyPolicyMenu));
             driver.findElement(privacyPolicyMenu).click();
         }
         wait.until(ExpectedConditions.visibilityOfElementLocated(privacyPolicyTitle));

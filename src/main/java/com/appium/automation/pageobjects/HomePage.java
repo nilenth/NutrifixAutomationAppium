@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.Duration;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -16,6 +17,7 @@ public class HomePage extends PageBase {
 
     WebDriverWait wait;
     Properties properties;
+    String landingPageText = "New user?\nHow can nutrifix help you?";
 
     By welcomeCloseButton = By.xpath("//button[@class='close-btn disable-hover button button-ios button-default button-default-ios']");
     By mealCard = By.xpath("//div[@class='meal-card']");
@@ -23,6 +25,7 @@ public class HomePage extends PageBase {
     By paragraph = By.xpath("//div[@class='article-popup']/h2");
     By articleCloseButton = By.xpath("//button[@class='nf-btn-close article disable-hover bar-button bar-button-ios bar-button-clear bar-button-clear-ios']");
     By logOutButton = By.xpath("//button[@class='btn-logout disable-hover button button-ios button-clear button-clear-ios button-block button-block-ios']");
+    By landingMessage = By.xpath("//div[@class='login-content purpose']/h2");
 
 
     public HomePage(IOSDriver driver) {
@@ -35,7 +38,6 @@ public class HomePage extends PageBase {
         wait.until(ExpectedConditions.visibilityOfElementLocated(welcomeCloseButton));
         driver.findElement(welcomeCloseButton).click();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(mealCard));
     }
 
     public void verifyArticleOpen() {
@@ -54,11 +56,11 @@ public class HomePage extends PageBase {
         driver.findElement(articleCloseButton).click();
     }
 
-    public void keepAppInBckground(){
+    public void keepAppInBckground() {
         driver.runAppInBackground(15);
     }
 
-    public void activateNutrifix(){
+    public void activateNutrifix() {
         driver.launchApp();
        /* driver.activateApp();*/
     }
@@ -70,15 +72,14 @@ public class HomePage extends PageBase {
     }
 
     public void logoutProcess() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(mealCard));
-        swipeHorizontal();
-        if (driver.findElement(logOutButton).isDisplayed()) {
-            driver.findElement(logOutButton).click();
-        } else {
-            swipeHorizontal();
-            wait.until(ExpectedConditions.visibilityOfElementLocated(logOutButton));
-            driver.findElement(logOutButton).click();
-        }
+        wait.until(ExpectedConditions.elementToBeClickable(logOutButton));
+        driver.findElement(logOutButton).click();
+    }
+
+
+    public void checkLandingPage() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(landingMessage));
+        Assert.assertEquals(driver.findElement(landingMessage).getText(), landingPageText);
     }
 
 }
